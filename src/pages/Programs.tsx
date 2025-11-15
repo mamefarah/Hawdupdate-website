@@ -1,0 +1,91 @@
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { programs } from "@/data/programs";
+import SEO from "@/components/SEO";
+
+const Programs = () => {
+  return (
+    <div className="min-h-screen">
+      <SEO 
+        title="Our Programs | Hawd Climate Guardian"
+        description="Discover our comprehensive climate adaptation programs including climate-smart agriculture, water conservation, reforestation, and community empowerment in Somalia's Gedo Zone."
+        keywords="climate programs Somalia, climate-smart agriculture, water conservation, reforestation, renewable energy, community development"
+      />
+      {/* Header Section */}
+      <section className="py-16 bg-secondary">
+        <div className="container text-center">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Programs</h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+            Comprehensive climate adaptation strategies designed for the unique challenges of the Gedo Zone
+          </p>
+        </div>
+      </section>
+
+      {/* Programs Detail */}
+      <section className="py-16">
+        <div className="container space-y-12">
+          {programs.map((program, index) => (
+            <Card
+              key={index}
+              className={`p-8 md:p-10 hover:shadow-xl transition-shadow ${
+                index % 2 === 0 ? "border-l-4 border-l-primary" : "border-r-4 border-r-primary"
+              }`}
+            >
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="flex-shrink-0">
+                  <div className="bg-primary/10 rounded-xl p-4">
+                    <program.icon className="h-12 w-12 text-primary" />
+                  </div>
+                </div>
+                <div className="flex-1 space-y-4">
+                  <div>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3">{program.title}</h2>
+                    <p className="text-muted-foreground leading-relaxed">{program.description}</p>
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-3 text-lg">Key Activities:</h3>
+                    <ul className="space-y-2">
+                      {program.activities.map((activity, idx) => (
+                        <li key={idx} className="flex items-start">
+                          <span className="text-primary mr-2 mt-1">●</span>
+                          <span className="text-muted-foreground text-sm">{activity}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">
+                      Impact: {program.impact}
+                    </Badge>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Integrated Approach */}
+      <section className="py-16 bg-secondary">
+        <div className="container">
+          <Card className="p-8 md:p-12">
+            <h2 className="text-3xl font-bold mb-6 text-center">Our Integrated Approach</h2>
+            <div className="space-y-4 text-muted-foreground leading-relaxed max-w-4xl mx-auto">
+              <p>
+                All our programs work together synergistically to create comprehensive climate resilience. Climate-smart agriculture is supported by reliable water infrastructure, enhanced by reforestation efforts, powered by renewable energy, guided by inclusive participation, and strengthened through continuous capacity building.
+              </p>
+              <p>
+                This integrated approach ensures that communities don't just adapt to climate change—they thrive despite it. Our proven capacity in project implementation, combined with strong community partnerships and technical expertise, enables us to deliver measurable results that improve livelihoods and protect the environment.
+              </p>
+              <p className="font-semibold text-foreground">
+                Every program is community-driven, ensuring local ownership, cultural sensitivity, and long-term sustainability.
+              </p>
+            </div>
+          </Card>
+        </div>
+      </section>
+    </div>
+  );
+};
+
+export default Programs;

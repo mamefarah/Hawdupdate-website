@@ -1,0 +1,162 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 84 100% 51%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 30 25% 92%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 30 25% 95%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 84 100% 51%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 25% 88%;
+    --input: 30 25% 88%;
+    --ring: 84 100% 51%;
+
+    --radius: 0.75rem;
+
+    --hero-gradient-start: 84 100% 51%;
+    --hero-gradient-end: 84 80% 45%;
+    
+    --earth-brown: 30 25% 35%;
+    --earth-light: 30 25% 92%;
+  }
+
+  .dark {
+    --background: 0 0% 7%;
+    --foreground: 0 0% 98%;
+
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 0 0% 10%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 84 100% 51%;
+    --primary-foreground: 0 0% 0%;
+
+    --secondary: 30 15% 20%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 30 15% 15%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 84 100% 51%;
+    --accent-foreground: 0 0% 0%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 30 15% 20%;
+    --input: 30 15% 20%;
+    --ring: 84 100% 51%;
+    
+    --earth-brown: 30 25% 65%;
+    --earth-light: 30 15% 15%;
+  }
+}
+
+@layer base {
+  html {
+    @apply text-text-primary;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-background-secondary text-text-primary;
+  }
+
+  * {
+    @apply border-border;
+  }
+}
+
+/* Custom animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.3s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out;
+}
+
+@layer components {
+  .container {
+    @apply px-4 mx-auto max-w-7xl;
+  }
+
+  .btn-primary {
+    @apply bg-primary hover:bg-primary-light text-text-light px-6 py-3 rounded-lg 
+    transition-colors duration-200;
+  }
+
+  .card {
+    @apply bg-background-primary rounded-lg shadow-sm border border-border;
+  }
+
+  .card-header {
+    @apply bg-background-earth p-4 rounded-t-lg;
+  }
+
+  .nav-link {
+    @apply text-text-light text-lg font-medium 
+           hover:text-primary-light transition-colors 
+           duration-200 py-2;
+  }
+}

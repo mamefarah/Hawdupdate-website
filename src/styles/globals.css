@@ -1,0 +1,55 @@
+:root {
+  /* Primary Colors */
+  --primary: #2F5233;        /* Deep Forest Green - for buttons and accents */
+  --primary-light: #7FA37C;  /* Sage Green - for hover states */
+  
+  /* Background Colors */
+  --bg-primary: #FFFFFF;     /* Clean White - main background */
+  --bg-secondary: #F5F7F4;   /* Light Sage - secondary sections */
+  --bg-earth: #FAF6F0;      /* Warm Earth Tone - special sections */
+  
+  /* Text Colors */
+  --text-primary: #1A1A1A;   /* Near Black - main text */
+  --text-muted: #4B5563;     /* Gray - secondary text */
+  --text-light: #FFFFFF;     /* White - text on dark backgrounds */
+  
+  /* Accent Colors */
+  --accent-success: #34D399;  /* Green - success states */
+  --accent-warning: #FBBF24;  /* Yellow - warning states */
+  --accent-error: #EF4444;    /* Red - error states */
+}
+
+/* Navbar */
+.navbar {
+  background-color: var(--bg-primary);
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.nav-link {
+  color: var(--text-primary);
+  &:hover {
+    color: var(--primary);
+  }
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--text-light);
+  &:hover {
+    background-color: var(--primary-light);
+  }
+}
+
+/* Alternating Sections */
+.section-primary {
+  background-color: var(--bg-primary);
+}
+
+.section-secondary {
+  background-color: var(--bg-secondary);
+}
+
+.section-earth {
+  background-color: var(--bg-earth);
+}
