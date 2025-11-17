@@ -14,7 +14,7 @@ export default defineConfig({
   name: "hawdclimateguardian",
   title: "Hawd Climate Guardian CMS",
 
-  projectId: "YOUR_PROJECT_ID",
+  projectId: "wnrpfl2o",
   dataset: "production",
 
   plugins: [structureTool(), visionTool()],
