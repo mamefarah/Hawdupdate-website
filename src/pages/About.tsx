@@ -1,9 +1,44 @@
+import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Building, User } from "lucide-react";
-import { values, specialists } from "@/data/about";
+import { values } from "@/data/about";
 import SEO from "@/components/SEO";
+import { AboutDocument, TeamMember, fetchAbout, fetchTeam } from "@/lib/sanityQueries";
+import type { PortableTextBlock } from "sanity";
+
+const renderPortableText = (blocks?: PortableTextBlock[]) => {
+  if (!blocks) return [];
+  return blocks
+    .map((block) => {
+      if (block._type !== "block" || !("children" in block)) return "";
+      const children = (block as any).children || [];
+      return children.map((child: any) => child.text).join("");
+    })
+    .filter(Boolean);
+};
 
 const About = () => {
+  const [aboutData, setAboutData] = useState<AboutDocument | null>(null);
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    setLoading(true);
+    Promise.all([fetchAbout(), fetchTeam()])
+      .then(([about, team]) => {
+        setAboutData(about);
+        setTeamMembers(team);
+      })
+      .catch((err) => {
+        console.error("Failed to load About content from Sanity", err);
+        setError("Unable to load About content right now.");
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  const aboutBodyParagraphs = useMemo(() => renderPortableText(aboutData?.body), [aboutData]);
+
   return (
     <div className="min-h-screen">
       <SEO 
@@ -14,12 +49,16 @@ const About = () => {
       {/* Header Section */}
       <section className="py-16 bg-secondary">
         <div className="container text-center">
-          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">About Hawd Climate Guardian</h1>
+          <h1 className="text-4xl md:text-5xl font-bold text-primary mb-4">
+            {aboutData?.title || "About Hawd Climate Guardian"}
+          </h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             A community-driven, local Somali organization building climate resilience in the Gedo Zone
           </p>
         </div>
       </section>
+
+      {error && <div className="bg-destructive/10 text-destructive text-center py-3">{error}</div>}
 
       {/* Our Story */}
       <section className="py-16">
@@ -27,15 +66,18 @@ const About = () => {
           <Card className="p-8 md:p-12 border-l-4 border-l-primary">
             <h2 className="text-3xl font-bold mb-6">Our Story</h2>
             <div className="space-y-4 text-muted-foreground leading-relaxed">
-              <p>
-                Founded on <span className="font-semibold text-foreground">February 12, 2023</span>, Hawd Climate Guardian was established in response to the critical climate vulnerability affecting the Dolow District in the Gedo Zone of Somalia.
-              </p>
-              <p>
-                Our strategy centers on <span className="font-semibold text-foreground">Climate-Smart Agriculture</span> and <span className="font-semibold text-foreground">water conservation</span>, working hand-in-hand with local communities, authorities, and international partners to build a resilient and sustainable future for the Gedo Zone.
-              </p>
-              <p>
-                We believe in collaborative approaches that respect local knowledge, empower communities, and create lasting positive change through innovation and partnership.
-              </p>
+              {aboutBodyParagraphs.length > 0 ? (
+                aboutBodyParagraphs.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)
+              ) : (
+                <>
+                  <p>
+                    Founded in 2023, Hawd Climate Guardian was established in response to the critical climate vulnerability affecting the Dolow District in the Gedo Zone of Somalia.
+                  </p>
+                  <p>
+                    Our strategy centers on climate-smart agriculture and water conservation, working hand-in-hand with local communities, authorities, and international partners to build a resilient and sustainable future for the Gedo Zone.
+                  </p>
+                </>
+              )}
             </div>
           </Card>
         </div>
@@ -92,7 +134,7 @@ const About = () => {
         </div>
       </section>
 
-      {/* Key Specialists */}
+      {/* Team from Sanity */}
       <section className="py-16 bg-secondary">
         <div className="container">
           <div className="text-center mb-12">
@@ -101,13 +143,23 @@ const About = () => {
               Dedicated specialists bringing expertise in climate resilience, agriculture, and community development
             </p>
           </div>
+          {loading && <p className="text-center text-muted-foreground">Loading team...</p>}
+          {!loading && teamMembers.length === 0 && (
+            <p className="text-center text-muted-foreground">Team profiles coming soon.</p>
+          )}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto">
-            {specialists.map((specialist, index) => (
-              <Card key={index} className="p-6 text-center hover:shadow-md transition-shadow">
-                <div className="bg-primary/10 rounded-full p-3 w-12 h-12 flex items-center justify-center mx-auto mb-3">
-                  <User className="h-6 w-6 text-primary" />
+            {teamMembers.map((member) => (
+              <Card key={member._id} className="p-6 text-center hover:shadow-md transition-shadow">
+                <div className="bg-primary/10 rounded-full p-3 w-16 h-16 flex items-center justify-center mx-auto mb-3 overflow-hidden">
+                  {member.photoUrl ? (
+                    <img src={member.photoUrl} alt={member.name || "Team member"} className="w-full h-full object-cover rounded-full" />
+                  ) : (
+                    <User className="h-8 w-8 text-primary" />
+                  )}
                 </div>
-                <p className="font-medium text-sm">{specialist}</p>
+                <p className="font-semibold">{member.name || "Team member"}</p>
+                <p className="text-sm text-muted-foreground">{member.role || "Role coming soon"}</p>
+                {member.bio && <p className="text-xs text-muted-foreground mt-2">{member.bio}</p>}
               </Card>
             ))}
           </div>
