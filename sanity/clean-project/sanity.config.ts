@@ -1,15 +1,16 @@
 import { defineConfig } from 'sanity'
-import 'dotenv/config'
-import { schemaTypes } from './schemas'
+import { deskTool } from 'sanity/desk'
+import { visionTool } from '@sanity/vision'
+
+const projectId = import.meta.env.SANITY_STUDIO_PROJECT_ID
+const dataset = import.meta.env.SANITY_STUDIO_DATASET
 
 export default defineConfig({
   name: 'default',
-  title: 'Clean project',
+  title: 'Hawd Climate Guardian',
 
-  projectId: process.env.SANITY_STUDIO_PROJECT_ID!,
-  dataset: process.env.SANITY_STUDIO_DATASET!,
+  projectId,
+  dataset,
 
-  schema: {
-    types: schemaTypes,
-  },
+  plugins: [deskTool(), visionTool()],
 })
