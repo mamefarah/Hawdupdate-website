@@ -14,8 +14,8 @@ export default defineConfig({
   name: "hawdclimateguardian",
   title: "Hawd Climate Guardian CMS",
 
-  projectId: "wnrpf1zo",
-  dataset: "production",
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_DATASET,
 
   plugins: [structureTool(), visionTool()],
 

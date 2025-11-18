@@ -1,14 +1,8 @@
-import {createClient} from '@sanity/client'
-import groq from 'groq'
+import { createClient } from "@sanity/client";
 
-const projectId = import.meta.env.VITE_SANITY_PROJECT_ID || 'wnrpf12o'
-const dataset = import.meta.env.VITE_SANITY_DATASET || 'production'
-
-export const client = createClient({
-  projectId,
-  dataset,
-  apiVersion: '2024-01-01',
-  useCdn: true,
-})
-
-export {groq}
+export const sanityClient = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_DATASET,
+  apiVersion: "2021-10-21",
+  useCdn: true
+});
