@@ -4,15 +4,14 @@ import { CONTACT_INFO, partnerships } from "@/data/contact";
 import ContactCard from "@/components/ContactCard";
 import PartnershipSection from "@/components/PartnershipSection";
 import ContactForm from "@/components/ContactForm";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 
 const Contact = () => {
   return (
     <div className="min-h-screen">
-      <SEO 
-        title="Contact Us | Hawd Climate Guardian"
-        description="Get in touch with Hawd Climate Guardian to learn more about our climate resilience work in Somalia or explore partnership opportunities."
-        keywords="contact Hawd Climate Guardian, partnership opportunities, climate NGO Somalia, get involved"
+      <Seo 
+        title="Contact Us | Hawd Climate Guardian Initiative"
+        description="Reach Hawd Climate Guardian Initiative to discuss climate resilience work, partnerships, or community support in the Gedo Zone."
       />
       {/* Header Section */}
       <section className="py-16 bg-secondary">
@@ -48,9 +47,12 @@ const Contact = () => {
               title="Email"
               content={
                 <>
-                  {CONTACT_INFO.email[0]}
-                  <br />
-                  {CONTACT_INFO.email[1]}
+                  <a
+                    href={`mailto:${CONTACT_INFO.email[0]}`}
+                    className="text-primary font-semibold hover:underline break-all"
+                  >
+                    {CONTACT_INFO.email[0]}
+                  </a>
                 </>
               }
             />

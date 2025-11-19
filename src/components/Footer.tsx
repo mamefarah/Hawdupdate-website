@@ -10,9 +10,11 @@ const Footer = () => {
           <div className="space-y-4">
             <img 
               src={logo} 
-              alt="Hawd Climate Guardian"
+              alt="Hawd Climate Guardian Initiative logo"
               className="h-16 md:h-20 w-auto mb-4"
               loading="lazy"
+              width={1152}
+              height={896}
             />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Building climate resilience and promoting sustainable practices in Gedo Zone, Somalia.
@@ -54,9 +56,12 @@ const Footer = () => {
               </div>
               <div className="flex items-start space-x-2">
                 <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                <p className="text-sm text-muted-foreground">
-                  info@Hawdclimateguardian.org
-                </p>
+                <a
+                  href="mailto:contact@hawdclimateguardian.org"
+                  className="text-sm font-semibold text-primary hover:underline break-all"
+                >
+                  contact@hawdclimateguardian.org
+                </a>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />

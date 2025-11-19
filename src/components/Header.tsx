@@ -28,6 +28,8 @@ const Header = () => {
             src={logo} 
             alt="Hawd Climate Guardian Logo"
             className="h-12 md:h-14 w-auto"
+            width={1152}
+            height={896}
           />
         </Link>
 

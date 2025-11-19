@@ -36,7 +36,7 @@ const ContactForm = () => {
       setIsSubmitting(false);
     }, 1500);
 
-    // In production, replace with actual API call:
+    // TODO: In production, send this payload to contact@hawdclimateguardian.org via a backend/email service.
     // try {
     //   await fetch('/api/contact', {
     //     method: 'POST',

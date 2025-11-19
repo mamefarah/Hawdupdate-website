@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 import { ServiceItem, fetchServices } from "@/lib/sanityQueries";
 
 const Programs = () => {
@@ -22,10 +22,9 @@ const Programs = () => {
 
   return (
     <div className="min-h-screen">
-      <SEO 
-        title="Our Programs | Hawd Climate Guardian"
-        description="Discover our comprehensive climate adaptation programs including climate-smart agriculture, water conservation, reforestation, and community empowerment in Somalia's Gedo Zone."
-        keywords="climate programs Somalia, climate-smart agriculture, water conservation, reforestation, renewable energy, community development"
+      <Seo 
+        title="Programs | Hawd Climate Guardian Initiative"
+        description="Explore Hawd Climate Guardian Initiative programs for climate-smart agriculture, water conservation, reforestation, and community empowerment in the Gedo Zone."
       />
       {/* Header Section */}
       <section className="py-16 bg-secondary">

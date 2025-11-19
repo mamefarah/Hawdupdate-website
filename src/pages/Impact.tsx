@@ -3,15 +3,14 @@ import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { MapPin, Calendar } from "lucide-react";
 import { achievements, timeline, sdgGoals } from "@/data/impact";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 
 const Impact = () => {
   return (
     <div className="min-h-screen">
-      <SEO 
-        title="Our Impact | Hawd Climate Guardian"
-        description="See the measurable results of our climate resilience initiatives in Somalia's Gedo Zone, including achievements in agriculture, water conservation, and community development."
-        keywords="climate impact Somalia, sustainable development goals, community resilience, environmental impact, Gedo Zone achievements"
+      <Seo 
+        title="Impact | Hawd Climate Guardian Initiative"
+        description="See how Hawd Climate Guardian Initiative improves livelihoods through climate adaptation, reforestation, and water conservation in the Gedo Zone."
       />
       {/* Header Section */}
       <section className="py-16 bg-secondary">

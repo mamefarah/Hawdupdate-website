@@ -2,17 +2,25 @@ import { useEffect, useMemo, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Building, User } from "lucide-react";
 import { values } from "@/data/about";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 import { AboutDocument, TeamMember, fetchAbout, fetchTeam } from "@/lib/sanityQueries";
 import type { PortableTextBlock } from "sanity";
+
+type PortableTextChild = {
+  text?: string;
+};
+
+type PortableTextBlockWithChildren = PortableTextBlock & {
+  children?: PortableTextChild[];
+};
 
 const renderPortableText = (blocks?: PortableTextBlock[]) => {
   if (!blocks) return [];
   return blocks
     .map((block) => {
       if (block._type !== "block" || !("children" in block)) return "";
-      const children = (block as any).children || [];
-      return children.map((child: any) => child.text).join("");
+      const children = (block as PortableTextBlockWithChildren).children || [];
+      return children.map((child) => child.text || "").join("");
     })
     .filter(Boolean);
 };
@@ -41,10 +49,9 @@ const About = () => {
 
   return (
     <div className="min-h-screen">
-      <SEO 
-        title="About Us | Hawd Climate Guardian"
-        description="Learn about Hawd Climate Guardian, a community-driven Somali organization building climate resilience in the Gedo Zone through sustainable practices and community empowerment."
-        keywords="Hawd Climate Guardian, about us, climate resilience Somalia, Gedo Zone NGO, sustainable development"
+      <Seo 
+        title="About Us | Hawd Climate Guardian Initiative"
+        description="Meet the team and story behind Hawd Climate Guardian Initiative, building climate resilience and sustainable futures across Somalia's Gedo Zone."
       />
       {/* Header Section */}
       <section className="py-16 bg-secondary">
@@ -152,7 +159,7 @@ const About = () => {
               <Card key={member._id} className="p-6 text-center hover:shadow-md transition-shadow">
                 <div className="bg-primary/10 rounded-full p-3 w-16 h-16 flex items-center justify-center mx-auto mb-3 overflow-hidden">
                   {member.photoUrl ? (
-                    <img src={member.photoUrl} alt={member.name || "Team member"} className="w-full h-full object-cover rounded-full" />
+                    <img src={member.photoUrl} alt={member.name || "Team member"} loading="lazy" className="w-full h-full object-cover rounded-full" />
                   ) : (
                     <User className="h-8 w-8 text-primary" />
                   )}

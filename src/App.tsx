@@ -14,6 +14,7 @@ import Impact from "./pages/Impact";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 import { sanityHealthCheck } from "./lib/sanityQueries";
+import AdminToolbar from "./components/AdminToolbar";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => {
             </main>
             <Footer />
             <ScrollToTop />
+            <AdminToolbar />
           </div>
         </BrowserRouter>
       </TooltipProvider>

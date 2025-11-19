@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Home, ArrowLeft, Search } from "lucide-react";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 
 const NotFound = () => {
   const location = useLocation();
@@ -14,8 +14,8 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-secondary px-4">
-      <SEO 
-        title="Page Not Found | Hawd Climate Guardian"
+      <Seo 
+        title="Page Not Found | Hawd Climate Guardian Initiative"
         description="The page you're looking for doesn't exist."
       />
       <Card className="max-w-lg w-full p-8 md:p-12 text-center">

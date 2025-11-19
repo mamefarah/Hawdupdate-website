@@ -16,7 +16,7 @@ import {
   ServiceItem,
   ProjectItem,
 } from "@/lib/sanityQueries";
-import SEO from "@/components/SEO";
+import Seo from "@/components/Seo";
 import heroImage from "@/assets/hero-landscape.jpg";
 import agricultureImage from "@/assets/agriculture.jpg";
 import reforestationImage from "@/assets/reforestation.jpg";
@@ -65,7 +65,10 @@ const Home = () => {
 
   return (
     <div className="min-h-screen">
-      <SEO />
+      <Seo
+        title="Hawd Climate Guardian Initiative | Building climate resilience in the Gedo Zone"
+        description="Learn about Hawd Climate Guardian Initiative's programs advancing climate adaptation and resilient livelihoods across Somalia's Gedo Zone."
+      />
       {/* Hero Section */}
       <section
         className="relative h-[90vh] flex items-center justify-center bg-cover bg-center"
@@ -163,6 +166,7 @@ const Home = () => {
                     <img
                       src={service.iconUrl}
                       alt={service.name || "Program icon"}
+                      loading="lazy"
                       className="h-12 w-12 rounded-lg object-cover"
                     />
                   ) : (
@@ -205,6 +209,7 @@ const Home = () => {
                     <img
                       src={project.imageUrl}
                       alt={project.title || "Project image"}
+                      loading="lazy"
                       className="h-full w-full object-cover"
                     />
                   </div>
@@ -232,25 +237,25 @@ const Home = () => {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
-              <img src={agricultureImage} alt="Climate-smart agriculture" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img src={agricultureImage} alt="Climate-smart agriculture" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <p className="text-white font-semibold p-6">Climate-Smart Agriculture</p>
               </div>
             </div>
             <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
-              <img src={reforestationImage} alt="Reforestation efforts" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img src={reforestationImage} alt="Reforestation efforts" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <p className="text-white font-semibold p-6">Community Reforestation</p>
               </div>
             </div>
             <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
-              <img src={waterImage} alt="Water conservation" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img src={waterImage} alt="Water conservation" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <p className="text-white font-semibold p-6">Water Conservation Infrastructure</p>
               </div>
             </div>
             <div className="relative h-64 md:h-80 rounded-xl overflow-hidden group">
-              <img src={communityImage} alt="Community engagement" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+              <img src={communityImage} alt="Community engagement" width={1024} height={768} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">
                 <p className="text-white font-semibold p-6">Community Empowerment</p>
               </div>
