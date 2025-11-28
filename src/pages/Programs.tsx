@@ -1,28 +1,38 @@
-import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Seo from "@/components/Seo";
-import { ServiceItem, fetchServices } from "@/lib/sanityQueries";
 
 const Programs = () => {
-  const [services, setServices] = useState<ServiceItem[]>([]);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchServices()
-      .then(setServices)
-      .catch((err) => {
-        console.error("Failed to load programs", err);
-        setError("Unable to load programs right now.");
-      })
-      .finally(() => setLoading(false));
-  }, []);
+  const services = [
+    {
+      _id: "1",
+      name: "Climate-Smart Agriculture",
+      description: "We implement sustainable farming techniques that adapt to changing climate conditions. This includes drought-resistant crop varieties, efficient irrigation systems, and soil conservation methods to ensure food security.",
+      iconUrl: null
+    },
+    {
+      _id: "2",
+      name: "Water Conservation",
+      description: "Our water conservation initiatives focus on harvesting rainwater, rehabilitating water pans, and establishing efficient water distribution systems to support both agriculture and livestock.",
+      iconUrl: null
+    },
+    {
+      _id: "3",
+      name: "Reforestation",
+      description: "We lead community-driven reforestation projects to restore degraded lands, prevent soil erosion, and create micro-climates that support biodiversity and agriculture.",
+      iconUrl: null
+    },
+    {
+      _id: "4",
+      name: "Community Empowerment",
+      description: "We provide training and capacity building for local communities, focusing on women and youth, to ensure long-term sustainability of climate adaptation strategies.",
+      iconUrl: null
+    }
+  ];
 
   return (
     <div className="min-h-screen">
-      <Seo 
+      <Seo
         title="Programs | Hawd Climate Guardian Initiative"
         description="Explore Hawd Climate Guardian Initiative programs for climate-smart agriculture, water conservation, reforestation, and community empowerment in the Gedo Zone."
       />
@@ -39,17 +49,11 @@ const Programs = () => {
       {/* Programs Detail */}
       <section className="py-16">
         <div className="container space-y-12">
-          {error && <div className="bg-destructive/10 text-destructive text-center py-3">{error}</div>}
-          {loading && <p className="text-center text-muted-foreground">Loading programs...</p>}
-          {!loading && services.length === 0 && !error && (
-            <p className="text-center text-muted-foreground">Programs coming soon.</p>
-          )}
           {services.map((program, index) => (
             <Card
               key={program._id}
-              className={`p-8 md:p-10 hover:shadow-xl transition-shadow ${
-                index % 2 === 0 ? "border-l-4 border-l-primary" : "border-r-4 border-r-primary"
-              }`}
+              className={`p-8 md:p-10 hover:shadow-xl transition-shadow ${index % 2 === 0 ? "border-l-4 border-l-primary" : "border-r-4 border-r-primary"
+                }`}
             >
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="flex-shrink-0">
@@ -61,8 +65,8 @@ const Programs = () => {
                 </div>
                 <div className="flex-1 space-y-4">
                   <div>
-                    <h2 className="text-2xl md:text-3xl font-bold mb-3">{program.name || "Program"}</h2>
-                    <p className="text-muted-foreground leading-relaxed">{program.description || "Details coming soon."}</p>
+                    <h2 className="text-2xl md:text-3xl font-bold mb-3">{program.name}</h2>
+                    <p className="text-muted-foreground leading-relaxed">{program.description}</p>
                   </div>
                   <div>
                     <Badge className="bg-primary text-primary-foreground hover:bg-primary/90">

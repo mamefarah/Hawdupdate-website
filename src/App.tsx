@@ -7,8 +7,7 @@ import { useEffect, lazy, Suspense } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
-import { sanityHealthCheck } from "./lib/sanityQueries";
-import AdminToolbar from "./components/AdminToolbar";
+
 
 // Lazy load pages
 const Home = lazy(() => import("./pages/Home"));
@@ -27,11 +26,6 @@ const LoadingFallback = () => (
 );
 
 const App = () => {
-  useEffect(() => {
-    sanityHealthCheck()
-      .then(() => console.info("Sanity connection ok"))
-      .catch((err) => console.error("Sanity connection failed", err));
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -56,7 +50,6 @@ const App = () => {
             </main>
             <Footer />
             <ScrollToTop />
-            <AdminToolbar />
           </div>
         </BrowserRouter>
       </TooltipProvider>
