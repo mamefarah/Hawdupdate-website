@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { MapPin, Mail, Phone } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { CONTACT_INFO } from "@/data/contact";
 
 const Footer = () => {
   return (
@@ -51,23 +52,24 @@ const Footer = () => {
               <div className="flex items-start space-x-2">
                 <MapPin className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                 <p className="text-sm text-muted-foreground">
-                  Dolow District, Gedo Region, Jubaland, Somalia
+                  {CONTACT_INFO.address.district}, {CONTACT_INFO.address.region}, {CONTACT_INFO.address.country}
                 </p>
               </div>
               <div className="flex items-start space-x-2">
                 <Mail className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                 <a
-                  href="mailto:contact@hawdclimateguardian.org"
+                  href={`mailto:${CONTACT_INFO.email[0]}`}
                   className="text-sm font-semibold text-primary hover:underline break-all"
                 >
-                  contact@hawdclimateguardian.org
+                  {CONTACT_INFO.email[0]}
                 </a>
               </div>
               <div className="flex items-start space-x-2">
                 <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                 <div className="text-sm text-muted-foreground">
-                  <p>+252 615 580 999</p>
-                  <p>+252 618 893 536</p>
+                  {CONTACT_INFO.phone.map((phoneNumber) => (
+                    <p key={phoneNumber}>{phoneNumber}</p>
+                  ))}
                 </div>
               </div>
             </div>

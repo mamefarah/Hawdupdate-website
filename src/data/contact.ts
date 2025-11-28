@@ -1,5 +1,5 @@
 export const CONTACT_INFO = {
-  phone: ["+252 615 580 999", "+252 618 893 536"],
+  phone: [],
   email: ["contact@hawdclimateguardian.org"],
   address: {
     district: "Dolow District",

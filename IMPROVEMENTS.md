@@ -55,9 +55,9 @@
 
 ### Performance Optimization
 - [ ] Implement lazy loading for images
-- [ ] Convert images to WebP format
+- [ ] Convert images to WebP format (logo.png and hcg-logo.jpg are candidates)
 - [ ] Add loading skeletons for async content
-- [ ] Implement code splitting for routes
+- [x] Implement code splitting for routes (Implemented via React.lazy)
 - [ ] Add service worker for PWA functionality
 
 ### Functionality
