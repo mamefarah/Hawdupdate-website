@@ -7,6 +7,8 @@
 - ✅ Added page-specific SEO meta tags for all pages (Home, About, Programs, Impact, Contact)
 - ✅ Improved Open Graph and Twitter Card metadata
 - ✅ Added descriptive keywords for better search engine visibility
+- ✅ Added JSON-LD Structured Data (Schema.org) for better Google indexing
+- ✅ Added Google Site Verification support via environment variables
 
 ### 2. Smooth Scroll Behavior
 - ✅ Added `scroll-behavior: smooth` to HTML element in CSS
