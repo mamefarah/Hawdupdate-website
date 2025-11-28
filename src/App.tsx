@@ -10,7 +10,9 @@ import ScrollToTop from "./components/ScrollToTop";
 
 
 // Lazy load pages
-const Home = lazy(() => import("./pages/Home"));
+import Home from "./pages/Home";
+// Lazy load pages
+// const Home = lazy(() => import("./pages/Home"));
 const About = lazy(() => import("./pages/About"));
 const Programs = lazy(() => import("./pages/Programs"));
 const Impact = lazy(() => import("./pages/Impact"));
