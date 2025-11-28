@@ -9,8 +9,8 @@ const Footer = () => {
       <div className="container py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           <div className="space-y-4">
-            <img 
-              src={logo} 
+            <img
+              src={logo}
               alt="Hawd Climate Guardian Initiative logo"
               className="h-16 md:h-20 w-auto mb-4"
               loading="lazy"
@@ -64,14 +64,16 @@ const Footer = () => {
                   {CONTACT_INFO.email[0]}
                 </a>
               </div>
-              <div className="flex items-start space-x-2">
-                <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                <div className="text-sm text-muted-foreground">
-                  {CONTACT_INFO.phone.map((phoneNumber) => (
-                    <p key={phoneNumber}>{phoneNumber}</p>
-                  ))}
+              {CONTACT_INFO.phone.length > 0 && (
+                <div className="flex items-start space-x-2">
+                  <Phone className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                  <div className="text-sm text-muted-foreground">
+                    {CONTACT_INFO.phone.map((phoneNumber) => (
+                      <p key={phoneNumber}>{phoneNumber}</p>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
           </div>
 

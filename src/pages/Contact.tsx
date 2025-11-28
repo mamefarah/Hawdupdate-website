@@ -9,7 +9,7 @@ import Seo from "@/components/Seo";
 const Contact = () => {
   return (
     <div className="min-h-screen">
-      <Seo 
+      <Seo
         title="Contact Us | Hawd Climate Guardian Initiative"
         description="Reach Hawd Climate Guardian Initiative to discuss climate resilience work, partnerships, or community support in the Gedo Zone."
       />
@@ -56,12 +56,13 @@ const Contact = () => {
                 </>
               }
             />
-
-            <ContactCard
-              icon={Phone}
-              title="Phone"
-              content={CONTACT_INFO.phone}
-            />
+            {CONTACT_INFO.phone.length > 0 && (
+              <ContactCard
+                icon={Phone}
+                title="Phone"
+                content={CONTACT_INFO.phone}
+              />
+            )}
           </div>
 
           {/* Contact Form */}
